@@ -31,6 +31,9 @@ body {
   margin: 0;
   background: var(--color-bg);
   color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
@@ -94,6 +97,7 @@ a:focus {
 .content {
   padding-top: var(--space-lg);
   padding-bottom: var(--space-lg);
+  flex: 1;
 }
 
 .block + .block {
