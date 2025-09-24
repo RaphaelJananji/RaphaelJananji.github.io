@@ -1,308 +1,183 @@
-/* Reset and Base Styles */
+/* Minimal, clean academic style */
+
+:root {
+  --font-body: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-bg: #ffffff;
+  --color-text: #1a1a1a;
+  --color-muted: #555;
+  --color-accent: #0046b8;
+  --color-accent-hover: #003380;
+  --color-line: #ccc;
+  --max-width: 780px;
+  --space: 1.25rem;
+  --space-sm: 0.6rem;
+  --space-lg: 2.2rem;
+  --line-height: 1.55;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: var(--line-height);
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #fff;
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
-/* Container */
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  text-decoration: underline;
+  color: var(--color-accent-hover);
 }
 
-/* Header Styles */
-.header {
-    margin-bottom: 40px;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 30px;
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space);
 }
 
-.profile-section {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
+.site-header {
+  padding-top: var(--space-sm);
 }
 
-.profile-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #ddd;
+.header-bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space);
+  flex-wrap: wrap;
+  padding-bottom: var(--space-sm);
 }
 
-.profile-info h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 8px;
+.site-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
-.profile-info .title {
-    font-size: 1.2rem;
-    color: #7f8c8d;
-    font-weight: 500;
-    margin-bottom: 4px;
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--space);
+}
+.site-nav a {
+  font-size: 0.95rem;
+  padding: 0.1rem 0;
+  position: relative;
+}
+.site-nav a[aria-current="page"] {
+  font-weight: 600;
 }
 
-.profile-info .affiliation {
-    font-size: 1rem;
-    color: #95a5a6;
-    margin-bottom: 15px;
+.rule-under-header,
+.rule-above-footer {
+  border: 0;
+  border-top: 1px solid var(--color-line);
+  margin: 0;
 }
 
-.contact-links {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+.content {
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
 }
 
-.contact-link {
-    color: #3498db;
-    text-decoration: none;
-    padding: 8px 16px;
-    border: 1px solid #3498db;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
+.block + .block {
+  margin-top: var(--space-lg);
 }
 
-.contact-link:hover {
-    background-color: #3498db;
-    color: white;
+h1, h2, h3 {
+  line-height: 1.25;
+  font-weight: 600;
+  margin: 0 0 0.6rem;
 }
 
-/* Main Content */
-.main-content {
-    margin-bottom: 40px;
+h1 {
+  font-size: 1.9rem;
 }
 
-.section {
-    margin-bottom: 40px;
+h2 {
+  font-size: 1.35rem;
+  margin-top: 0;
 }
 
-.section h2 {
-    font-size: 1.8rem;
-    color: #2c3e50;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ecf0f1;
+h3 {
+  font-size: 1.05rem;
+  margin-top: 1.2rem;
 }
 
-.section p {
-    margin-bottom: 15px;
-    text-align: justify;
+p {
+  margin: 0 0 1rem;
 }
 
-/* Research Interests */
-.research-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 10px;
+ul.simple-list {
+  margin: 0.5rem 0 1.2rem;
+  padding-left: 1.15rem;
+}
+ul.simple-list li {
+  margin: 0.25rem 0;
 }
 
-.research-list li {
-    background-color: #f8f9fa;
-    padding: 12px 16px;
-    border-left: 4px solid #3498db;
-    border-radius: 4px;
+.teaching-list .course {
+  margin-bottom: 1.6rem;
+}
+.course h2 {
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+}
+.course .meta {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin: 0 0 0.4rem;
+}
+.course .desc {
+  margin: 0;
 }
 
-/* Publications */
-.publications {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+.site-footer {
+  margin-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
 }
 
-.publication {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    border-left: 4px solid #e74c3c;
+.footer-content {
+  padding-top: var(--space-sm);
+  text-align: left;
 }
 
-.publication h3 {
-    font-size: 1.2rem;
-    color: #2c3e50;
-    margin-bottom: 8px;
-    line-height: 1.4;
+.footer-content p {
+  margin: 0 0 0.4rem;
 }
 
-.publication .authors {
-    font-size: 0.95rem;
-    color: #7f8c8d;
-    margin-bottom: 5px;
+.tiny {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  margin-top: 0.8rem;
 }
 
-.publication .journal {
-    font-size: 0.95rem;
-    color: #95a5a6;
-    margin-bottom: 12px;
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
 }
 
-.publication-links {
-    display: flex;
-    gap: 10px;
-}
-
-.pub-link {
-    color: #e74c3c;
-    text-decoration: none;
-    padding: 4px 8px;
-    border: 1px solid #e74c3c;
-    border-radius: 3px;
-    font-size: 0.85rem;
-    transition: all 0.3s ease;
-}
-
-.pub-link:hover {
-    background-color: #e74c3c;
-    color: white;
-}
-
-/* Teaching */
-.teaching {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.course {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    border-left: 4px solid #27ae60;
-}
-
-.course h3 {
-    font-size: 1.2rem;
-    color: #2c3e50;
-    margin-bottom: 8px;
-}
-
-.course-details {
-    font-size: 0.9rem;
-    color: #7f8c8d;
-    margin-bottom: 10px;
-    font-weight: 500;
-}
-
-.course-description {
-    color: #555;
-    text-align: justify;
-}
-
-/* News */
-.news {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.news-item {
-    display: flex;
-    gap: 15px;
-    padding: 15px 0;
-    border-bottom: 1px solid #ecf0f1;
-}
-
-.news-item:last-child {
-    border-bottom: none;
-}
-
-.news-date {
-    color: #95a5a6;
-    font-size: 0.9rem;
-    font-weight: 500;
-    min-width: 80px;
-    flex-shrink: 0;
-}
-
-.news-item p {
-    margin: 0;
-    color: #555;
-}
-
-/* Footer */
-.footer {
-    text-align: center;
-    padding: 30px 0;
-    border-top: 1px solid #ecf0f1;
-    color: #95a5a6;
-    font-size: 0.9rem;
-}
-
-.footer p {
-    margin-bottom: 5px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        padding: 15px;
-    }
-    
-    .profile-section {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .profile-info h1 {
-        font-size: 2rem;
-    }
-    
-    .contact-links {
-        justify-content: center;
-    }
-    
-    .research-list {
-        grid-template-columns: 1fr;
-    }
-    
-    .news-item {
-        flex-direction: column;
-        gap: 5px;
-    }
-    
-    .news-date {
-        min-width: auto;
-    }
-}
-
-@media (max-width: 480px) {
-    .profile-image {
-        width: 120px;
-        height: 120px;
-    }
-    
-    .profile-info h1 {
-        font-size: 1.8rem;
-    }
-    
-    .section h2 {
-        font-size: 1.5rem;
-    }
-    
-    .contact-links {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .contact-link {
-        width: 100%;
-        text-align: center;
-        max-width: 200px;
-    }
+@media (max-width: 620px) {
+  html { font-size: 16px; }
+  .header-bar { flex-direction: column; align-items: flex-start; }
+  .site-nav ul { gap: 1rem; }
 }
