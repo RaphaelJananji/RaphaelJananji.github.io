@@ -152,20 +152,6 @@ ul.simple-list li {
   margin: 0;
 }
 
-.site-footer {
-  margin-top: var(--space-lg);
-  padding-bottom: var(--space-lg);
-}
-
-.footer-content {
-  padding-top: var(--space-sm);
-  text-align: left;
-}
-
-.footer-content p {
-  margin: 0 0 0.4rem;
-}
-
 .tiny {
   font-size: 0.75rem;
   color: var(--color-muted);
