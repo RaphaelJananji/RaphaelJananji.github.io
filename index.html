@@ -5,9 +5,16 @@
   <title>Raphaël Jananji</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Homepage of Raphaël Jananji" />
+  <meta name="robots" content="noai, noimageai" />
+  <meta name="AdsBot-Google" content="noindex" />
   <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
+  <!-- Profile picture in left margin -->
+  <aside class="profile-sidebar">
+    <img src="./assets/profile.jpeg" alt="Raphaël Jananji" class="profile-picture" />
+  </aside>
+
   <header class="site-header">
     <div class="inner header-bar">
       <div class="site-identity">
@@ -17,6 +24,7 @@
         <ul>
           <li><a href="./assets/cv/CV_Academic.pdf" target="_blank" rel="noopener">CV</a></li>
           <li><a href="teaching.html">Teaching</a></li>
+          <li><button class="theme-toggle" id="theme-toggle">Light Mode</button></li>
         </ul>
       </nav>
     </div>
@@ -36,11 +44,24 @@
 
     <section class="block">
       <h2>Working Papers</h2>
-      <ul class="simple-list">
-        <li> Labour Market Composition: Is the Public Sector Attenuating Cyclicality </li>
-        <li> Social Optima of Government Employment under HANK </li>
-        <li> Endogeneous Idiosyncratic Climate Risk (with Alexandre Pavlov)</li>
-      </ul>
+      <div class="paper">
+        <div class="paper-title">Stabilization Effect of Government Employment</div>
+        <div class="paper-actions">
+          <a href="./assets/Draft/The Stabilization Effect of Government Employment_February.pdf" target="_blank" class="pdf-button">PDF</a>
+          <button class="abstract-toggle" onclick="toggleAbstract('abstract1')">Show Abstract</button>
+        </div>
+        <div class="abstract" id="abstract1">
+          <p>This paper studies the macroeconomic stabilization role of government employment using U.S. micro data and a two-asset Heterogeneous Agent New Keynesian model with sector-specific income and unemployment risk. Public-sector employment features persistently lower and less cyclical income risk than private employment. These differences generate higher marginal propensities to consume and greater illiquid asset holdings among public-sector households, consistent with PSID evidence. By embedding low-risk income ex ante in the labor market, government employment stabilizes aggregate demand and capital accumulation, and amplifies monetary policy through asset-return and labor-market spillovers. This mechanism is distinct from standard automatic stabilizers and highlights the macroeconomic importance of public sector employment security. An extension incorporating endogenous wages and search frictions will permit structural estimation using SIPP-based income risk and CPS employment transition data.</p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <div class="paper-title">Social Optima of Government Employment</div>
+      </div>
+
+      <div class="paper">
+        <div class="paper-title">Endogeneous Idiosyncratic Climate Risk <span class="coauthor">(with Alexandre Pavlov)</span></div>
+      </div>
     </section>
   </main>
 
@@ -50,12 +71,51 @@
       <p>
         <a href="mailto:raphael.jananji@umontreal.ca">raphael.jananji@umontreal.ca</a> · Université de Montréal
       </p>
-      <p class="tiny">&copy; <span id="year"></span> Raphaël Jananji</p>
+      <p class="tiny">&copy; <span id="year"></span> Raphaël Jananji. All rights reserved. Please do not distribute without permission.</p>
+      <p class="tiny">Content on this site may not be used for AI training or machine learning purposes.</p>
     </div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      html.setAttribute('data-theme', savedTheme);
+      themeToggle.textContent = savedTheme === 'light' ? 'Dark Mode' : 'Light Mode';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      if (currentTheme === 'light') {
+        html.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+        themeToggle.textContent = 'Light Mode';
+      } else {
+        html.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        themeToggle.textContent = 'Dark Mode';
+      }
+    });
+    
+    // Abstract toggle functionality
+    function toggleAbstract(id) {
+      const abstract = document.getElementById(id);
+      const button = event.target;
+      
+      if (abstract.classList.contains('show')) {
+        abstract.classList.remove('show');
+        button.textContent = 'Show Abstract';
+      } else {
+        abstract.classList.add('show');
+        button.textContent = 'Hide Abstract';
+      }
+    }
   </script>
 </body>
 </html>

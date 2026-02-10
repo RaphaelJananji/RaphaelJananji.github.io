@@ -3,17 +3,28 @@
 :root {
   --font-body: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Dark mode (default) */
+  --color-bg: #1a1a1a;
+  --color-text: #e8e8e8;
+  --color-muted: #999;
+  --color-accent: #4a90ff;
+  --color-accent-hover: #6aadff;
+  --color-line: #333;
+  --max-width: 780px;
+  --space: 1.25rem;
+  --space-sm: 0.6rem;
+  --space-lg: 2.2rem;
+  --line-height: 1.55;
+}
+
+/* Light mode */
+[data-theme="light"] {
   --color-bg: #ffffff;
   --color-text: #1a1a1a;
   --color-muted: #555;
   --color-accent: #0046b8;
   --color-accent-hover: #003380;
   --color-line: #ccc;
-  --max-width: 780px;
-  --space: 1.25rem;
-  --space-sm: 0.6rem;
-  --space-lg: 2.2rem;
-  --line-height: 1.55;
 }
 
 * {
@@ -136,6 +147,91 @@ ul.simple-list li {
   margin: 0.25rem 0;
 }
 
+/* Paper items with abstracts */
+.copyright-notice {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+  padding: 0.8rem;
+  background: rgba(128, 128, 128, 0.08);
+  border-radius: 4px;
+}
+
+.paper {
+  margin-bottom: 1.8rem;
+}
+
+.paper-title {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.paper-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.pdf-button {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  display: inline-block;
+}
+
+.pdf-button:hover {
+  background: var(--color-accent-hover);
+  text-decoration: none;
+}
+
+.coauthor {
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+.abstract-toggle {
+  background: none;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.abstract-toggle:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.abstract {
+  display: none;
+  margin-top: 0.8rem;
+  padding: 1rem;
+  background: rgba(128, 128, 128, 0.1);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 4px;
+}
+
+.abstract.show {
+  display: block;
+}
+
+.abstract p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
 .teaching-list .course {
   margin-bottom: 1.6rem;
 }
@@ -180,8 +276,57 @@ ul.simple-list li {
   white-space: nowrap; border: 0;
 }
 
+/* Profile sidebar - fixed to left margin */
+.profile-sidebar {
+  position: fixed;
+  left: 2rem;
+  top: 30%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.profile-picture {
+  width: 540px;
+  height: auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 1100px) {
+  /* When screen is too narrow, hide sidebar and show mobile version */
+  .profile-sidebar {
+    position: static;
+    transform: none;
+    text-align: center;
+    padding: var(--space) 0;
+  }
+  
+  .profile-picture {
+    width: 300px;
+  }
+}
+
 @media (max-width: 620px) {
   html { font-size: 16px; }
   .header-bar { flex-direction: column; align-items: flex-start; }
   .site-nav ul { gap: 1rem; }
+  
+  .profile-picture {
+    width: 200px;
+  }
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--color-line);
+  color: var(--color-text);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.theme-toggle:hover {
+  background: var(--color-line);
 }
