@@ -158,6 +158,12 @@ ul.simple-list li {
   border-radius: 4px;
 }
 
+.paper-list {
+  list-style: disc;
+  margin: 0.5rem 0 1.2rem;
+  padding-left: 1.5rem;
+}
+
 .paper {
   margin-bottom: 1.8rem;
 }
@@ -277,32 +283,17 @@ ul.simple-list li {
 }
 
 /* Profile sidebar - fixed to left margin */
+/* Profile picture - always on top, centered */
 .profile-sidebar {
-  position: fixed;
-  left: 2rem;
-  top: 30%;
-  transform: translateY(-50%);
-  z-index: 10;
+  text-align: center;
+  padding: var(--space) 0;
 }
 
 .profile-picture {
-  width: 540px;
+  width: 280px;
+  max-width: 90%;
   height: auto;
   border-radius: 8px;
-}
-
-@media (max-width: 1100px) {
-  /* When screen is too narrow, hide sidebar and show mobile version */
-  .profile-sidebar {
-    position: static;
-    transform: none;
-    text-align: center;
-    padding: var(--space) 0;
-  }
-  
-  .profile-picture {
-    width: 300px;
-  }
 }
 
 @media (max-width: 620px) {
@@ -311,7 +302,7 @@ ul.simple-list li {
   .site-nav ul { gap: 1rem; }
   
   .profile-picture {
-    width: 200px;
+    width: 220px;
   }
 }
 
