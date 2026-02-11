@@ -285,8 +285,12 @@ ul.simple-list li {
 /* Profile sidebar - fixed to left margin */
 /* Profile picture - always on top, centered */
 .profile-sidebar {
-  text-align: center;
   padding: var(--space) 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .profile-picture {
@@ -294,6 +298,29 @@ ul.simple-list li {
   max-width: 90%;
   height: auto;
   border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* Sidebar quote - very subtle, to the right of picture */
+.sidebar-quote {
+  padding: 1rem 1.5rem;
+  max-width: 320px;
+  text-align: left;
+  opacity: 0.35;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: var(--color-muted);
+  flex: 0 1 auto;
+}
+
+.sidebar-quote p {
+  margin: 0 0 0.5rem;
+}
+
+.sidebar-quote .quote-attribution {
+  margin-top: 0.8rem;
+  font-size: 0.65rem;
+  font-style: italic;
 }
 
 @media (max-width: 620px) {
